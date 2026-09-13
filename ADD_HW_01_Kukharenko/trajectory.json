@@ -1,0 +1,134 @@
+[
+  {
+    "index": 1,
+    "timestamp": "2026-09-12T12:15:28.037552+00:00",
+    "node": "agent",
+    "action": {
+      "step": 1
+    },
+    "observation": "",
+    "tool_calls": [
+      {
+        "name": "calculate_stock_status",
+        "args": {
+          "material_code": "BRG-6205",
+          "site": "PLANT-A"
+        },
+        "id": "call_S6ZcJidiq8sIJYRlm5G1tfXt",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "timestamp": "2026-09-12T12:15:28.043119+00:00",
+    "node": "tools",
+    "action": [
+      {
+        "name": "calculate_stock_status",
+        "args": {
+          "material_code": "BRG-6205",
+          "site": "PLANT-A"
+        },
+        "id": "call_S6ZcJidiq8sIJYRlm5G1tfXt",
+        "type": "tool_call"
+      }
+    ],
+    "observation": [
+      "{\n  \"status\": \"ok\",\n  \"data\": {\n    \"material_code\": \"BRG-6205\",\n    \"site\": \"PLANT-A\",\n    \"category\": \"surplus\",\n    \"on_hand_qty\": 84,\n    \"open_purchase_qty\": 20,\n    \"justified_qty\": 13,\n    \"surplus_qty\": 91,\n    \"frozen_value_uah\": 28665.0,\n    \"months_per_issue\": 0.3,\n    \"assumption\": \"planned demand and historical usage are both considered\"\n  }\n}"
+    ],
+    "tool_calls": [
+      {
+        "name": "calculate_stock_status",
+        "args": {
+          "material_code": "BRG-6205",
+          "site": "PLANT-A"
+        },
+        "id": "call_S6ZcJidiq8sIJYRlm5G1tfXt",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "timestamp": "2026-09-12T12:15:28.722747+00:00",
+    "node": "agent",
+    "action": {
+      "step": 2
+    },
+    "observation": "",
+    "tool_calls": [
+      {
+        "name": "find_transfer_options",
+        "args": {
+          "material_code": "BRG-6205",
+          "source_site": "PLANT-A"
+        },
+        "id": "call_5O7WkemgqK9EHcXRSAowYph9",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "timestamp": "2026-09-12T12:15:28.729144+00:00",
+    "node": "tools",
+    "action": [
+      {
+        "name": "find_transfer_options",
+        "args": {
+          "material_code": "BRG-6205",
+          "source_site": "PLANT-A"
+        },
+        "id": "call_5O7WkemgqK9EHcXRSAowYph9",
+        "type": "tool_call"
+      }
+    ],
+    "observation": [
+      "{\n  \"status\": \"ok\",\n  \"data\": {\n    \"source_site\": \"PLANT-A\",\n    \"source_surplus_qty\": 71,\n    \"options\": [\n      {\n        \"target_site\": \"PLANT-B\",\n        \"transfer_qty\": 12,\n        \"avoided_purchase_uah\": 3780.0\n      }\n    ]\n  }\n}"
+    ],
+    "tool_calls": [
+      {
+        "name": "find_transfer_options",
+        "args": {
+          "material_code": "BRG-6205",
+          "source_site": "PLANT-A"
+        },
+        "id": "call_5O7WkemgqK9EHcXRSAowYph9",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "timestamp": "2026-09-12T12:15:30.395315+00:00",
+    "node": "agent",
+    "action": {
+      "step": 3
+    },
+    "observation": "Факти:\n- На PLANT-A залишок BRG-6205 становить 84 шт, з них обґрунтовано лише 13 шт.\n- Надлишок (за розрахунком) — 71 шт.\n- Відкрита закупівля — ще 20 шт.\n- Є можливість переміщення 12 шт. на PLANT-B, що дозволяє уникнути закупівлі на суму 3780 грн.\n\nПрактична дія:\nРекомендую підготувати пропозицію на переміщення 12 шт. BRG-6205 з PLANT-A на PLANT-B для оптимізації запасів.",
+    "tool_calls": []
+  },
+  {
+    "index": 6,
+    "timestamp": "2026-09-12T12:15:31.709369+00:00",
+    "node": "formatter",
+    "action": {
+      "reason": null
+    },
+    "observation": {
+      "summary": "На PLANT-A для BRG-6205 наявний залишок 84 шт, з яких 71 шт визначено як надлишок. Можливе переміщення 12 шт на PLANT-B для уникнення закупівлі.",
+      "status": "surplus",
+      "recommended_actions": [
+        "Підготувати пропозицію на переміщення 12 шт BRG-6205 з PLANT-A на PLANT-B."
+      ],
+      "confidence": 0.95,
+      "sources": [
+        "calculate_stock_status",
+        "find_transfer_options"
+      ],
+      "stop_reason": "completed"
+    },
+    "tool_calls": []
+  }
+]

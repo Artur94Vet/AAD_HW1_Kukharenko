@@ -1,0 +1,143 @@
+[
+  {
+    "index": 1,
+    "timestamp": "2026-09-12T12:15:13.263961+00:00",
+    "node": "agent",
+    "action": {
+      "step": 1
+    },
+    "observation": "",
+    "tool_calls": [
+      {
+        "name": "calculate_stock_status",
+        "args": {
+          "material_code": "BRG-6205",
+          "site": "PLANT-A",
+          "horizon_days": 90,
+          "safety_factor": 1.25
+        },
+        "id": "c1f2f0ea813f4bb2bcc669ad12c83f02",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "timestamp": "2026-09-12T12:15:13.271784+00:00",
+    "node": "tools",
+    "action": [
+      {
+        "name": "calculate_stock_status",
+        "args": {
+          "material_code": "BRG-6205",
+          "site": "PLANT-A",
+          "horizon_days": 90,
+          "safety_factor": 1.25
+        },
+        "id": "c1f2f0ea813f4bb2bcc669ad12c83f02",
+        "type": "tool_call"
+      }
+    ],
+    "observation": [
+      "{\n  \"status\": \"ok\",\n  \"data\": {\n    \"material_code\": \"BRG-6205\",\n    \"site\": \"PLANT-A\",\n    \"category\": \"surplus\",\n    \"on_hand_qty\": 84,\n    \"open_purchase_qty\": 20,\n    \"justified_qty\": 13,\n    \"surplus_qty\": 91,\n    \"frozen_value_uah\": 28665.0,\n    \"months_per_issue\": 0.3,\n    \"assumption\": \"planned demand and historical usage are both considered\"\n  }\n}"
+    ],
+    "tool_calls": [
+      {
+        "name": "calculate_stock_status",
+        "args": {
+          "material_code": "BRG-6205",
+          "site": "PLANT-A",
+          "horizon_days": 90,
+          "safety_factor": 1.25
+        },
+        "id": "c1f2f0ea813f4bb2bcc669ad12c83f02",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "timestamp": "2026-09-12T12:15:13.279090+00:00",
+    "node": "agent",
+    "action": {
+      "step": 2
+    },
+    "observation": "",
+    "tool_calls": [
+      {
+        "name": "find_transfer_options",
+        "args": {
+          "material_code": "BRG-6205",
+          "source_site": "PLANT-A",
+          "min_transfer_qty": 1
+        },
+        "id": "3e7f09e0aea24e04b8a709bae436ff1b",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "timestamp": "2026-09-12T12:15:13.287775+00:00",
+    "node": "tools",
+    "action": [
+      {
+        "name": "find_transfer_options",
+        "args": {
+          "material_code": "BRG-6205",
+          "source_site": "PLANT-A",
+          "min_transfer_qty": 1
+        },
+        "id": "3e7f09e0aea24e04b8a709bae436ff1b",
+        "type": "tool_call"
+      }
+    ],
+    "observation": [
+      "{\n  \"status\": \"ok\",\n  \"data\": {\n    \"source_site\": \"PLANT-A\",\n    \"source_surplus_qty\": 71,\n    \"options\": [\n      {\n        \"target_site\": \"PLANT-B\",\n        \"transfer_qty\": 12,\n        \"avoided_purchase_uah\": 3780.0\n      }\n    ]\n  }\n}"
+    ],
+    "tool_calls": [
+      {
+        "name": "find_transfer_options",
+        "args": {
+          "material_code": "BRG-6205",
+          "source_site": "PLANT-A",
+          "min_transfer_qty": 1
+        },
+        "id": "3e7f09e0aea24e04b8a709bae436ff1b",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "timestamp": "2026-09-12T12:15:13.294458+00:00",
+    "node": "agent",
+    "action": {
+      "step": 3
+    },
+    "observation": "Факти отримано. Формую обережну рекомендацію.",
+    "tool_calls": []
+  },
+  {
+    "index": 6,
+    "timestamp": "2026-09-12T12:15:13.301210+00:00",
+    "node": "formatter",
+    "action": {
+      "reason": null
+    },
+    "observation": {
+      "summary": "Оцінку виконано за залишком, попитом і відкритою закупівлею.",
+      "status": "surplus",
+      "recommended_actions": [
+        "Перевірити відкриті закупівлі та погодити внутрішнє переміщення."
+      ],
+      "confidence": 0.86,
+      "sources": [
+        "calculate_stock_status",
+        "find_transfer_options"
+      ],
+      "stop_reason": "completed"
+    },
+    "tool_calls": []
+  }
+]

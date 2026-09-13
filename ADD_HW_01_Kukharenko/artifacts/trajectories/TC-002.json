@@ -1,0 +1,89 @@
+[
+  {
+    "index": 1,
+    "timestamp": "2026-09-12T12:15:13.225550+00:00",
+    "node": "agent",
+    "action": {
+      "step": 1
+    },
+    "observation": "",
+    "tool_calls": [
+      {
+        "name": "calculate_stock_status",
+        "args": {
+          "material_code": "BRG-6205",
+          "site": "PLANT-B",
+          "horizon_days": 90,
+          "safety_factor": 1.25
+        },
+        "id": "02787fa8b694459ba3b781a6f21688fc",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "timestamp": "2026-09-12T12:15:13.233640+00:00",
+    "node": "tools",
+    "action": [
+      {
+        "name": "calculate_stock_status",
+        "args": {
+          "material_code": "BRG-6205",
+          "site": "PLANT-B",
+          "horizon_days": 90,
+          "safety_factor": 1.25
+        },
+        "id": "02787fa8b694459ba3b781a6f21688fc",
+        "type": "tool_call"
+      }
+    ],
+    "observation": [
+      "{\n  \"status\": \"ok\",\n  \"data\": {\n    \"material_code\": \"BRG-6205\",\n    \"site\": \"PLANT-B\",\n    \"category\": \"justified\",\n    \"on_hand_qty\": 4,\n    \"open_purchase_qty\": 0,\n    \"justified_qty\": 16,\n    \"surplus_qty\": 0,\n    \"frozen_value_uah\": 0.0,\n    \"months_per_issue\": 0.4,\n    \"assumption\": \"planned demand and historical usage are both considered\"\n  }\n}"
+    ],
+    "tool_calls": [
+      {
+        "name": "calculate_stock_status",
+        "args": {
+          "material_code": "BRG-6205",
+          "site": "PLANT-B",
+          "horizon_days": 90,
+          "safety_factor": 1.25
+        },
+        "id": "02787fa8b694459ba3b781a6f21688fc",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "timestamp": "2026-09-12T12:15:13.241368+00:00",
+    "node": "agent",
+    "action": {
+      "step": 2
+    },
+    "observation": "Факти отримано. Формую обережну рекомендацію.",
+    "tool_calls": []
+  },
+  {
+    "index": 4,
+    "timestamp": "2026-09-12T12:15:13.248900+00:00",
+    "node": "formatter",
+    "action": {
+      "reason": null
+    },
+    "observation": {
+      "summary": "Оцінку виконано за залишком, попитом і відкритою закупівлею.",
+      "status": "justified",
+      "recommended_actions": [
+        "Зберегти резерв і переглянути оцінку після нового ремонтного плану."
+      ],
+      "confidence": 0.86,
+      "sources": [
+        "calculate_stock_status"
+      ],
+      "stop_reason": "completed"
+    },
+    "tool_calls": []
+  }
+]

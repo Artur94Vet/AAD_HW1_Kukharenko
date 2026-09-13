@@ -1,0 +1,13 @@
+{
+  "summary": "На PLANT-A для BRG-6205 наявний залишок 84 шт, з яких 71 шт визначено як надлишок. Можливе переміщення 12 шт на PLANT-B для уникнення закупівлі.",
+  "status": "surplus",
+  "recommended_actions": [
+    "Підготувати пропозицію на переміщення 12 шт BRG-6205 з PLANT-A на PLANT-B."
+  ],
+  "confidence": 0.95,
+  "sources": [
+    "calculate_stock_status",
+    "find_transfer_options"
+  ],
+  "stop_reason": "completed"
+}

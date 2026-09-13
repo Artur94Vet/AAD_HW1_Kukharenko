@@ -1,0 +1,119 @@
+[
+  {
+    "case_id": "TC-001",
+    "input_query": "Оціни BRG-6205 на PLANT-A",
+    "expected_result": "surplus",
+    "actual_result": {
+      "summary": "Оцінку виконано за залишком, попитом і відкритою закупівлею.",
+      "status": "surplus",
+      "recommended_actions": [
+        "Перевірити відкриті закупівлі та погодити внутрішнє переміщення."
+      ],
+      "confidence": 0.86,
+      "sources": [
+        "calculate_stock_status"
+      ],
+      "stop_reason": "completed"
+    },
+    "steps": 4,
+    "tool_calls": [
+      "calculate_stock_status"
+    ],
+    "time_ms": 38.305,
+    "passed": true
+  },
+  {
+    "case_id": "TC-002",
+    "input_query": "Оціни BRG-6205 на PLANT-B",
+    "expected_result": "justified",
+    "actual_result": {
+      "summary": "Оцінку виконано за залишком, попитом і відкритою закупівлею.",
+      "status": "justified",
+      "recommended_actions": [
+        "Зберегти резерв і переглянути оцінку після нового ремонтного плану."
+      ],
+      "confidence": 0.86,
+      "sources": [
+        "calculate_stock_status"
+      ],
+      "stop_reason": "completed"
+    },
+    "steps": 4,
+    "tool_calls": [
+      "calculate_stock_status"
+    ],
+    "time_ms": 36.285,
+    "passed": true
+  },
+  {
+    "case_id": "TC-003",
+    "input_query": "Чи можна перемістити BRG-6205 з PLANT-A?",
+    "expected_result": "surplus",
+    "actual_result": {
+      "summary": "Оцінку виконано за залишком, попитом і відкритою закупівлею.",
+      "status": "surplus",
+      "recommended_actions": [
+        "Перевірити відкриті закупівлі та погодити внутрішнє переміщення."
+      ],
+      "confidence": 0.86,
+      "sources": [
+        "calculate_stock_status",
+        "find_transfer_options"
+      ],
+      "stop_reason": "completed"
+    },
+    "steps": 6,
+    "tool_calls": [
+      "calculate_stock_status",
+      "find_transfer_options"
+    ],
+    "time_ms": 49.748,
+    "passed": true
+  },
+  {
+    "case_id": "TC-004",
+    "input_query": "Оціни VLV-DN50 на PLANT-B",
+    "expected_result": "surplus",
+    "actual_result": {
+      "summary": "Оцінку виконано за залишком, попитом і відкритою закупівлею.",
+      "status": "surplus",
+      "recommended_actions": [
+        "Перевірити відкриті закупівлі та погодити внутрішнє переміщення."
+      ],
+      "confidence": 0.86,
+      "sources": [
+        "calculate_stock_status"
+      ],
+      "stop_reason": "completed"
+    },
+    "steps": 4,
+    "tool_calls": [
+      "calculate_stock_status"
+    ],
+    "time_ms": 35.825,
+    "passed": true
+  },
+  {
+    "case_id": "TC-005",
+    "input_query": "Оціни UNKNOWN-1 на PLANT-C",
+    "expected_result": "not_found",
+    "actual_result": {
+      "summary": "Оцінку виконано за залишком, попитом і відкритою закупівлею.",
+      "status": "not_found",
+      "recommended_actions": [
+        "Уточнити код матеріалу або підприємство."
+      ],
+      "confidence": 0.86,
+      "sources": [
+        "calculate_stock_status"
+      ],
+      "stop_reason": "completed"
+    },
+    "steps": 4,
+    "tool_calls": [
+      "calculate_stock_status"
+    ],
+    "time_ms": 35.832,
+    "passed": true
+  }
+]
