@@ -1,0 +1,38 @@
+[
+  {
+    "scenario": "approve",
+    "interrupted": true,
+    "completed": true,
+    "tools_called": [
+      "get_stock_balance",
+      "calculate_stock_status",
+      "search_knowledge",
+      "commit_reduction_action"
+    ],
+    "actions_in_registry": 1
+  },
+  {
+    "scenario": "reject",
+    "interrupted": true,
+    "completed": true,
+    "tools_called": [
+      "get_stock_balance",
+      "calculate_stock_status",
+      "search_knowledge",
+      "commit_reduction_action:rejected"
+    ],
+    "actions_in_registry": 1
+  },
+  {
+    "scenario": "edit",
+    "interrupted": true,
+    "completed": true,
+    "tools_called": [
+      "get_stock_balance",
+      "calculate_stock_status",
+      "search_knowledge",
+      "commit_reduction_action"
+    ],
+    "actions_in_registry": 2
+  }
+]

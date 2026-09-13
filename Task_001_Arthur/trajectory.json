@@ -1,0 +1,61 @@
+[
+  {
+    "index": 1,
+    "timestamp": "2026-09-12T12:45:36.900278+00:00",
+    "node": "agent",
+    "action": {
+      "step": 1
+    },
+    "observation": "",
+    "tool_calls": [
+      {
+        "name": "calculate_stock_status",
+        "args": {
+          "material_code": "BRG-6205",
+          "site": "PLANT-A",
+          "horizon_days": 90
+        },
+        "id": "c6d4118492924ff5b98550c2a2c6e8c3",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "timestamp": "2026-09-12T12:45:36.906034+00:00",
+    "node": "tools",
+    "action": {
+      "name": "calculate_stock_status",
+      "args": {
+        "material_code": "BRG-6205",
+        "site": "PLANT-A",
+        "horizon_days": 90
+      },
+      "id": "c6d4118492924ff5b98550c2a2c6e8c3",
+      "type": "tool_call"
+    },
+    "observation": "{\n  \"status\": \"ok\",\n  \"data\": {\n    \"material_code\": \"BRG-6205\",\n    \"site\": \"PLANT-A\",\n    \"category\": \"surplus\",\n    \"justified_qty\": 13,\n    \"future_qty\": 104,\n    \"surplus_qty\": 91,\n    \"frozen_value_uah\": 28665.0\n  }\n}",
+    "tool_calls": [
+      {
+        "name": "calculate_stock_status",
+        "args": {
+          "material_code": "BRG-6205",
+          "site": "PLANT-A",
+          "horizon_days": 90
+        },
+        "id": "c6d4118492924ff5b98550c2a2c6e8c3",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "timestamp": "2026-09-12T12:45:36.910299+00:00",
+    "node": "agent",
+    "action": {
+      "step": 2
+    },
+    "observation": "Оцінку завершено: факти відокремлено від припущень.",
+    "tool_calls": []
+  }
+]
